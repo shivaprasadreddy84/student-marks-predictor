@@ -1,0 +1,584 @@
+/* ========================================
+   MarkSense - Register Page
+   ======================================== */
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-light: #eef2ff;
+
+    --intro-bg: #171b3d;
+
+    --text-dark: #172033;
+    --text-medium: #4f5b70;
+    --text-light: #7b879c;
+
+    --white: #ffffff;
+    --border: #dfe4ed;
+    --input-bg: #fbfcfe;
+
+    --success: #15803d;
+    --error: #dc2626;
+
+    --shadow: 0 20px 50px rgba(23, 32, 51, 0.10);
+}
+
+
+/* ========================================
+   Reset
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+    background: #f6f7fb;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* ========================================
+   Main Layout
+   ======================================== */
+
+.register-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 43% 57%;
+}
+
+
+/* ========================================
+   Left Intro Section
+   ======================================== */
+
+.register-intro {
+    background: var(--intro-bg);
+    color: var(--white);
+    padding: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.intro-content {
+    width: 100%;
+    max-width: 560px;
+    margin: auto;
+}
+
+
+/* Logo */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+
+    color: var(--white);
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary);
+    border-radius: 10px;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+/* Intro Text */
+
+.intro-text {
+    margin-top: 95px;
+}
+
+.eyebrow {
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+}
+
+.intro-text h1 {
+    max-width: 520px;
+
+    font-size: 43px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+
+    margin-bottom: 22px;
+}
+
+.intro-description {
+    max-width: 500px;
+
+    color: #d5d9e8;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   Benefits
+   ======================================== */
+
+.benefits {
+    margin-top: 42px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.benefit-icon {
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.20);
+    color: #a5b4fc;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.benefit h3 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.benefit p {
+    color: #b9c0d3;
+    font-size: 13px;
+}
+
+
+/* ========================================
+   Right Register Section
+   ======================================== */
+
+.register-section {
+    background: #f6f7fb;
+
+    padding: 40px 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-y: auto;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 590px;
+
+    background: var(--white);
+
+    border: 1px solid #e8ebf1;
+    border-radius: 18px;
+
+    padding: 38px;
+
+    box-shadow: var(--shadow);
+}
+
+
+/* Back Link */
+
+.back-link {
+    display: inline-block;
+
+    color: var(--text-medium);
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 28px;
+}
+
+.back-link:hover {
+    color: var(--primary);
+}
+
+
+/* Header */
+
+.register-header {
+    margin-bottom: 28px;
+}
+
+.register-header h2 {
+    color: var(--text-dark);
+
+    font-size: 29px;
+    line-height: 1.2;
+
+    margin-bottom: 9px;
+}
+
+.register-header p {
+    color: var(--text-medium);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   Form
+   ======================================== */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    color: var(--text-dark);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* Inputs */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 47px;
+
+    padding: 0 14px;
+
+    background: var(--input-bg);
+
+    color: var(--text-dark);
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #8993a7;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.10);
+}
+
+
+/* Select */
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+/* ========================================
+   Role Selection
+   ======================================== */
+
+.role-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.role-card {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 12px;
+
+    background: var(--white);
+
+    color: var(--text-dark);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: 0.2s ease;
+}
+
+.role-card:hover {
+    border-color: #a5b4fc;
+}
+
+.role-card.active {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.role-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f3f8;
+    border-radius: 8px;
+
+    font-size: 18px;
+}
+
+.role-card.active .role-icon {
+    background: var(--white);
+}
+
+.role-card strong {
+    display: block;
+
+    color: var(--text-dark);
+
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.role-card small {
+    display: block;
+
+    color: var(--text-medium);
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   Password Row
+   ======================================== */
+
+.password-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+
+/* ========================================
+   Form Message
+   ======================================== */
+
+.form-message {
+    min-height: 20px;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    font-weight: 600;
+}
+
+.form-message.error {
+    color: var(--error);
+}
+
+.form-message.success {
+    color: var(--success);
+}
+
+
+/* ========================================
+   Register Button
+   ======================================== */
+
+.register-button {
+    width: 100%;
+    height: 48px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--primary);
+    color: var(--white);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.register-button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   Login Text
+   ======================================== */
+
+.login-text {
+    margin-top: 19px;
+
+    text-align: center;
+
+    color: var(--text-medium);
+
+    font-size: 13px;
+}
+
+.login-text a {
+    color: var(--primary);
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   Security Note
+   ======================================== */
+
+.security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid #edf0f5;
+}
+
+.security-note span {
+    font-size: 15px;
+}
+
+.security-note p {
+    color: var(--text-medium);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   Responsive - Tablet
+   ======================================== */
+
+@media (max-width: 1000px) {
+
+    .register-page {
+        grid-template-columns: 1fr;
+    }
+
+    .register-intro {
+        display: none;
+    }
+
+    .register-section {
+        min-height: 100vh;
+        padding: 35px 25px;
+    }
+
+}
+
+
+/* ========================================
+   Responsive - Mobile
+   ======================================== */
+
+@media (max-width: 600px) {
+
+    .register-section {
+        padding: 20px 14px;
+    }
+
+    .register-card {
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .register-header h2 {
+        font-size: 25px;
+    }
+
+    .role-options {
+        grid-template-columns: 1fr;
+    }
+
+    .password-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+}

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History | MarkSense</title>
+
+    <link rel="stylesheet" href="history.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">M</span>
+            <span class="logo-text">MarkSense</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="student-dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="prediction.html" class="nav-item">
+                <span class="nav-icon">✦</span>
+                <span>Predict Marks</span>
+            </a>
+
+            <a href="analysis.html" class="nav-item">
+                <span class="nav-icon">▥</span>
+                <span>Performance Analysis</span>
+            </a>
+
+            <a href="history.html" class="nav-item active">
+                <span class="nav-icon">◷</span>
+                <span>Prediction History</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="logout-btn" id="logoutBtn">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+                <h1>Prediction History</h1>
+                <p>View and track your previous mark predictions.</p>
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-info">
+                    <span class="profile-name">Student</span>
+                    <span class="profile-role">Student</span>
+                </div>
+
+                <div class="profile-avatar">
+                    S
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- PAGE INTRO -->
+
+            <div class="intro-section">
+
+                <div>
+                    <h2>Your Prediction History</h2>
+
+                    <p>
+                        Review your previous predictions and compare your
+                        academic performance across different exams.
+                    </p>
+                </div>
+
+                <a href="prediction.html" class="primary-btn">
+                    + New Prediction
+                </a>
+
+            </div>
+
+
+            <!-- ================= SUMMARY CARDS ================= -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        #
+                    </div>
+
+                    <div>
+                        <p>Total Predictions</p>
+                        <h3 id="totalPredictions">4</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        %
+                    </div>
+
+                    <div>
+                        <p>Average Predicted Marks</p>
+                        <h3 id="averagePrediction">78.4</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ↑
+                    </div>
+
+                    <div>
+                        <p>Highest Prediction</p>
+                        <h3 id="highestPrediction">86</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ★
+                    </div>
+
+                    <div>
+                        <p>Latest Prediction</p>
+                        <h3 id="latestPrediction">82.5</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FILTERS ================= -->
+
+            <div class="filter-section">
+
+                <div class="filter-title">
+                    <h3>Prediction Records</h3>
+                    <p>Filter your previous predictions.</p>
+                </div>
+
+                <div class="filters">
+
+                    <div class="filter-group">
+
+                        <label for="examFilter">
+                            Exam
+                        </label>
+
+                        <select id="examFilter">
+
+                            <option value="all">
+                                All Exams
+                            </option>
+
+                            <option value="mid1">
+                                Mid Exam 1
+                            </option>
+
+                            <option value="mid2">
+                                Mid Exam 2
+                            </option>
+
+                            <option value="internal">
+                                Internal Assessment
+                            </option>
+
+                            <option value="semester">
+                                Semester Exam
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="difficultyFilter">
+                            Difficulty
+                        </label>
+
+                        <select id="difficultyFilter">
+
+                            <option value="all">
+                                All Difficulties
+                            </option>
+
+                            <option value="easy">
+                                Easy
+                            </option>
+
+                            <option value="medium">
+                                Medium
+                            </option>
+
+                            <option value="hard">
+                                Hard
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="clear-filter"
+                        id="clearFilters">
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= HISTORY TABLE ================= -->
+
+            <div class="history-card">
+
+                <div class="table-header">
+
+                    <div>
+                        <h3>Previous Predictions</h3>
+                        <p>
+                            Your recent prediction records
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Exam</th>
+
+                                <th>Date</th>
+
+                                <th>Previous Marks</th>
+
+                                <th>Assessment</th>
+
+                                <th>Attendance</th>
+
+                                <th>Study Hours</th>
+
+                                <th>Difficulty</th>
+
+                                <th>Predicted Marks</th>
+
+                                <th>Performance</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="historyTableBody">
+
+                            <tr>
+
+                                <td>Mid Exam 1</td>
+
+                                <td>28 Sep 2026</td>
+
+                                <td>76</td>
+
+                                <td>82</td>
+
+                                <td>88%</td>
+
+                                <td>3.5 hrs</td>
+
+                                <td>
+                                    <span class="difficulty medium">
+                                        Medium
+                                    </span>
+                                </td>
+
+                                <td class="predicted-mark">
+                                    82.5
+                                </td>
+
+                                <td>
+                                    <span class="performance good">
+                                        Good
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>Internal Assessment</td>
+
+                                <td>20 Sep 2026</td>
+
+                                <td>74</td>
+
+                                <td>80</td>
+
+                                <td>86%</td>
+
+                                <td>3 hrs</td>
+
+                                <td>
+                                    <span class="difficulty easy">
+                                        Easy
+                                    </span>
+                                </td>
+
+                                <td class="predicted-mark">
+                                    81
+                                </td>
+
+                                <td>
+                                    <span class="performance good">
+                                        Good
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>Mid Exam 2</td>
+
+                                <td>10 Sep 2026</td>
+
+                                <td>70</td>
+
+                                <td>75</td>
+
+                                <td>84%</td>
+
+                                <td>2.8 hrs</td>
+
+                                <td>
+                                    <span class="difficulty hard">
+                                        Hard
+                                    </span>
+                                </td>
+
+                                <td class="predicted-mark">
+                                    76.5
+                                </td>
+
+                                <td>
+                                    <span class="performance average">
+                                        Average
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>Semester Exam</td>
+
+                                <td>25 Aug 2026</td>
+
+                                <td>78</td>
+
+                                <td>83</td>
+
+                                <td>90%</td>
+
+                                <td>4 hrs</td>
+
+                                <td>
+                                    <span class="difficulty medium">
+                                        Medium
+                                    </span>
+                                </td>
+
+                                <td class="predicted-mark">
+                                    86
+                                </td>
+
+                                <td>
+                                    <span class="performance excellent">
+                                        Excellent
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= BOTTOM ACTION ================= -->
+
+            <div class="bottom-action">
+
+                <div>
+
+                    <h3>Want a new prediction?</h3>
+
+                    <p>
+                        Enter your latest academic details to generate
+                        a new marks prediction.
+                    </p>
+
+                </div>
+
+                <a href="prediction.html" class="secondary-btn">
+                    Predict Marks →
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="history.js"></script>
+
+</body>
+
+</html>
