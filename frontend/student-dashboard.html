@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1020">
+    <title>Student Dashboard | MarkSense</title>
+    <link rel="stylesheet" href="student-dashboard.css">
+    <script src="student-dashboard.js" defer></script>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">M</span>
+            <span>Mark<span>Sense</span></span>
+        </a>
+
+        <div class="menu-label">WORKSPACE</div>
+
+        <nav class="navigation">
+            <button class="nav-link active" data-section="overview">
+                <span>▦</span> Overview
+            </button>
+            <button class="nav-link" data-section="predict">
+                <span>✳</span> Predict Marks
+            </button>
+            <button class="nav-link" data-section="performance">
+                <span>↗</span> Performance
+            </button>
+            <button class="nav-link" data-section="history">
+                <span>◷</span> Prediction History
+            </button>
+            <button class="nav-link" data-section="profile">
+                <span>♙</span> My Profile
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <strong>Keep improving!</strong>
+                <p>Use your academic insights to plan your next steps.</p>
+            </div>
+
+            <button class="logout-button" id="logoutButton">
+                <span>↪</span> Log out
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <button
+                id="menuToggle"
+                class="menu-toggle"
+                aria-label="Toggle navigation"
+            >☰</button>
+
+            <div class="breadcrumb">
+                Workspace <span>/</span>
+                <strong id="pageTitle">Overview</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="user-avatar" id="userAvatar">S</div>
+                <div class="topbar-user">
+                    <strong id="headerName">Student</strong>
+                    <span>Student account</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="page-content">
+
+            <!-- ================= OVERVIEW ================= -->
+            <section class="page-section" id="overviewSection">
+
+                <div class="welcome-row">
+                    <div>
+                        <p class="eyebrow">STUDENT WORKSPACE</p>
+                        <h1>
+                            Welcome back,
+                            <span id="welcomeName">Student</span> 👋
+                        </h1>
+                        <p class="subtitle">
+                            Your academic journey, all in one place.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" data-go="predict">
+                        ＋ Predict my marks
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Latest prediction</span>
+                            <span class="stat-icon purple">✳</span>
+                        </div>
+                        <h2 id="latestPrediction">—</h2>
+                        <p>Marks out of 100</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Predictions made</span>
+                            <span class="stat-icon blue">◷</span>
+                        </div>
+                        <h2 id="predictionCount">—</h2>
+                        <p>Total saved predictions</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Performance records</span>
+                            <span class="stat-icon green">↗</span>
+                        </div>
+                        <h2 id="recordCount">—</h2>
+                        <p>Academic records available</p>
+                    </article>
+
+                </div>
+
+                <div class="content-grid">
+
+                    <article class="panel academic-overview-panel">
+    <div class="panel-heading">
+        <div>
+            <h2>Academic Overview</h2>
+            <p>Your academic profile and prediction progress</p>
+        </div>
+        <span class="stat-icon purple">▤</span>
+    </div>
+
+    <div class="academic-details">
+        <div class="academic-item">
+            <span>Department</span>
+            <strong id="overviewDepartment">Loading...</strong>
+        </div>
+
+        <div class="academic-item">
+            <span>Academic year</span>
+            <strong id="overviewYear">Loading...</strong>
+        </div>
+
+        <div class="academic-item">
+            <span>Semester</span>
+            <strong id="overviewSemester">Loading...</strong>
+        </div>
+
+        <div class="academic-item">
+            <span>Attendance</span>
+            <strong id="overviewAttendance">Loading...</strong>
+        </div>
+
+        <div class="academic-item">
+            <span>Latest predicted marks</span>
+            <strong id="overviewLatestMarks">Loading...</strong>
+        </div>
+
+        <div class="academic-item">
+            <span>Total predictions</span>
+            <strong id="overviewPredictionCount">Loading...</strong>
+        </div>
+    </div>
+
+    <button class="text-button" data-go="profile">
+        View student profile →
+    </button>
+</article>
+
+                    <article class="panel quick-panel">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Quick actions</h2>
+                                <p>Continue with your studies</p>
+                            </div>
+                        </div>
+
+                        <button class="quick-action" data-go="predict">
+                            <span class="quick-icon purple">✳</span>
+                            <span>
+                                <strong>Predict your marks</strong>
+                                <small>Estimate your expected marks</small>
+                            </span>
+                            <span class="action-arrow">→</span>
+                        </button>
+
+                        <button class="quick-action" data-go="performance">
+                            <span class="quick-icon green">↗</span>
+                            <span>
+                                <strong>View performance</strong>
+                                <small>Review your academic records</small>
+                            </span>
+                            <span class="action-arrow">→</span>
+                        </button>
+
+                        <button class="quick-action" data-go="history">
+                            <span class="quick-icon orange">◷</span>
+                            <span>
+                                <strong>Prediction history</strong>
+                                <small>Review previous predictions</small>
+                            </span>
+                            <span class="action-arrow">→</span>
+                        </button>
+                    </article>
+
+                </div>
+
+                <article class="panel recent-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Recent predictions</h2>
+                            <p>Your saved prediction results</p>
+                        </div>
+
+                        <button class="text-button" data-go="history">
+                            View history →
+                        </button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Exam</th>
+                                    <th>Predicted marks</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recentPredictions">
+                                <tr>
+                                    <td colspan="4" class="table-empty">
+                                        No prediction records loaded yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ================= PREDICT MARKS ================= -->
+            <section class="page-section hidden" id="predictSection">
+
+                <div class="section-heading">
+                    <p class="eyebrow">MARKS PREDICTION</p>
+                    <h1>Predict your marks</h1>
+                    <p class="subtitle">
+                        Enter your academic details to estimate your expected
+                        performance.
+                    </p>
+                </div>
+
+                <div class="form-panel">
+
+                    <div class="form-panel-heading">
+                        <span class="large-icon purple">✳</span>
+                        <div>
+                            <h2>Academic information</h2>
+                            <p>Enter the details required for your prediction.</p>
+                        </div>
+                    </div>
+
+                    <form id="predictionForm">
+
+                        <div class="form-grid">
+
+                            <!-- EXAM SELECTOR -->
+                            <div class="form-group">
+                                <label for="exam_id">Select exam</label>
+                                <select id="exam_id" required>
+                                    <option value="">Loading exams...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="studytime">Weekly study time</label>
+                                <select id="studytime" required>
+                                    <option value="">Select study time</option>
+                                    <option value="1">Less than 2 hours</option>
+                                    <option value="2">2–5 hours</option>
+                                    <option value="3">5–10 hours</option>
+                                    <option value="4">More than 10 hours</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="failures">Previous class failures</label>
+                                <input
+                                    id="failures"
+                                    type="number"
+                                    min="0"
+                                    max="10"
+                                    value="0"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="absences">Number of absences</label>
+                                <input
+                                    id="absences"
+                                    type="number"
+                                    min="0"
+                                    max="365"
+                                    value="0"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="g1">First-period marks (0–20)</label>
+                                <input
+                                    id="g1"
+                                    type="number"
+                                    min="0"
+                                    max="20"
+                                    step="0.1"
+                                    placeholder="e.g. 12"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="g2">Second-period marks (0–20)</label>
+                                <input
+                                    id="g2"
+                                    type="number"
+                                    min="0"
+                                    max="20"
+                                    step="0.1"
+                                    placeholder="e.g. 15"
+                                    required
+                                >
+                            </div>
+
+                        </div>
+
+                        <p class="form-note">
+                            Enter accurate academic details. The model uses
+                            your study time, previous marks, failures, and
+                            absences to estimate your result.
+                        </p>
+
+                        <p
+                            id="predictionMessage"
+                            class="form-message"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+
+                        <button
+                            class="primary-button"
+                            id="predictButton"
+                            type="submit"
+                        >
+                            Predict marks →
+                        </button>
+
+                    </form>
+
+                    <!-- PREDICTION RESULT -->
+                    <div id="predictionResult" class="result-card hidden">
+                        <p class="eyebrow">PREDICTION RESULT</p>
+
+                        <h2>
+                            <span id="resultMarks">—</span>
+                            <small>/ 100</small>
+                        </h2>
+
+                        <p id="resultDescription">Predicted marks</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+<!-- ================= PERFORMANCE ================= -->
+<section class="page-section hidden" id="performanceSection">
+
+    <div class="section-heading">
+        <p class="eyebrow">ACADEMIC INSIGHTS</p>
+        <h1>Performance analysis</h1>
+        <p class="subtitle">
+            Review your actual academic records and track your progress.
+        </p>
+    </div>
+
+    <div class="stats-grid">
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Performance records</span>
+                <span class="stat-icon purple">▤</span>
+            </div>
+            <h2 id="performanceRecordCount">—</h2>
+            <p>Saved academic records</p>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Average actual marks</span>
+                <span class="stat-icon green">↗</span>
+            </div>
+            <h2 id="averageActualMarks">—</h2>
+            <p>Across records with external marks</p>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <span>Average attendance</span>
+                <span class="stat-icon blue">✓</span>
+            </div>
+            <h2 id="averageAttendance">—</h2>
+            <p>Across records with attendance</p>
+        </article>
+    </div>
+
+    <article class="panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Academic performance records</h2>
+                <p>Information saved for your exams</p>
+            </div>
+        </div>
+
+        <p id="performanceMessage" class="form-message"
+           role="status" aria-live="polite"></p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exam</th>
+                        <th>Subject</th>
+                        <th>Assignment 1 /20</th>
+                        <th>Assignment 2 /20</th>
+                        <th>External /100</th>
+                        <th>External /60</th>
+                        <th>Final /100</th>
+                        <th>Attendance</th>
+                        <th>Study hours</th>
+                    </tr>
+                </thead>
+
+                <tbody id="performanceRecords">
+                    <tr>
+                        <td colspan="9" class="table-empty">
+                            Performance records have not been loaded yet.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+</section>
+
+            <!-- ================= HISTORY ================= -->
+            <section class="page-section hidden" id="historySection">
+
+                <div class="section-heading">
+                    <p class="eyebrow">YOUR RECORDS</p>
+                    <h1>Prediction history</h1>
+                    <p class="subtitle">
+                        Review your previously saved predictions.
+                    </p>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>All predictions</h2>
+                            <p>Your saved prediction records</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Exam</th>
+                                    <th>Predicted marks</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="historyPredictions">
+                                <tr>
+                                    <td colspan="4" class="table-empty">
+                                        Prediction history has not been loaded yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- ================= PROFILE ================= -->
+            <section class="page-section hidden" id="profileSection">
+
+                <p
+                    id="profileMessage"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+                <div class="section-heading">
+                    <p class="eyebrow">ACCOUNT SETTINGS</p>
+                    <h1>My profile</h1>
+                    <p class="subtitle">
+                        Your MarkSense account information.
+                    </p>
+                </div>
+
+                <article class="panel profile-panel">
+
+                    <div class="profile-banner">
+                        <div class="profile-avatar" id="profileAvatar">S</div>
+
+                        <div>
+                            <h2 id="profileName">Student</h2>
+                            <p>Student account</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-details">
+
+                        <div>
+                            <span>Full name</span>
+                            <strong id="profileFullName">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Email address</span>
+                            <strong id="profileEmail">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Account ID</span>
+                            <strong id="profileAccountId">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Account type</span>
+                            <strong id="profileRole">Student</strong>
+                        </div>
+
+                        <div>
+                            <span>Department</span>
+                            <strong id="profileDepartment">Not provided</strong>
+                        </div>
+
+                        <div>
+                            <span>Year</span>
+                            <strong id="profileYear">Not provided</strong>
+                        </div>
+
+                        <div>
+                            <span>Semester</span>
+                            <strong id="profileSemester">Not provided</strong>
+                        </div>
+
+                        <div>
+                            <span>Study hours</span>
+                            <strong id="profileStudyHours">Not provided</strong>
+                        </div>
+
+                        <div>
+                            <span>Attendance</span>
+                            <strong id="profileAttendance">Not provided</strong>
+                        </div>
+
+                    </div>
+
+                    <p class="form-note">
+                        Your academic details will appear after your student
+                        profile has been created.
+                    </p>
+
+                </article>
+                <!-- CREATE STUDENT PROFILE BUTTON -->
+                <button
+                    class="primary-button"
+                    onclick="window.location.href='student-profile.html'"
+                    style="margin-top: 20px;"
+                >
+                    Create Student Profile →
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>

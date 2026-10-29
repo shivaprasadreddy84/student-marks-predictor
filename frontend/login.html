@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1020">
+    <title>Login | MarkSense</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+</head>
+<body>
+
+    <header class="login-navbar">
+        <a href="index.html" class="brand">
+            <span class="brand-icon">M</span>
+            <span>Mark<span class="brand-highlight">Sense</span></span>
+        </a>
+        <a href="index.html" class="back-link">← Back to home</a>
+    </header>
+
+    <main class="login-layout">
+
+        <section class="login-intro">
+            <span class="section-kicker">WELCOME TO MARKSENSE</span>
+            <h1>Your academic journey starts <span>here.</span></h1>
+            <p>
+                Sign in to explore your predicted marks, understand your
+                academic performance, and keep track of your progress.
+            </p>
+
+            <div class="login-benefits">
+                <div class="benefit">
+                    <span class="benefit-icon">✳</span>
+                    <div>
+                        <strong>Marks prediction</strong>
+                        <p>Explore your expected exam performance.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span class="benefit-icon green">⌁</span>
+                    <div>
+                        <strong>Academic insights</strong>
+                        <p>Understand your results and progress.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span class="benefit-icon orange">▤</span>
+                    <div>
+                        <strong>Prediction history</strong>
+                        <p>Review your previous predictions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-form-section">
+            <div class="login-card">
+                <div class="form-heading">
+                    <div class="form-logo">M</div>
+                    <h2>Welcome back</h2>
+                    <p>Enter your account details to continue.</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrap">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="toggle-password"
+                                aria-label="Show password"
+                            >Show</button>
+                        </div>
+                    </div>
+
+                    <div class="role-heading">Sign in as</div>
+
+                    <div class="role-options">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="student" checked>
+                            <span class="role-content">
+                                <span class="role-symbol">♙</span>
+                                <span>
+                                    <strong>Student</strong>
+                                    <small>My academic progress</small>
+                                </span>
+                            </span>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="role" value="admin">
+                            <span class="role-content">
+                                <span class="role-symbol">▦</span>
+                                <span>
+                                    <strong>Admin</strong>
+                                    <small>Manage academics</small>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+
+                    <button type="submit" id="loginSubmit" class="login-submit">
+                        Sign In <span>→</span>
+                    </button>
+                </form>
+
+                <div class="register-prompt">
+                    Don't have an account?
+                    <a href="register.html">Create an account</a>
+                </div>
+            </div>
+
+            <p class="security-note">
+                <span>✓</span> Sign in to access your personal workspace.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="login-footer">
+        <span>© 2026 MarkSense</span>
+        <span>Understand your performance. Discover your potential.</span>
+    </footer>
+
+</body>
+</html>

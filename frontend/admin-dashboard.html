@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkSense | Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon">M</div>
+            <div>Mark<span class="brand-accent">Sense</span><small>ADMIN PANEL</small></div>
+        </div>
+
+        <p class="sidebar-label">MAIN MENU</p>
+        <nav class="navigation">
+            <button class="nav-link active" data-section="overview">▦ Dashboard</button>
+            <button class="nav-link" data-section="students">♙ Students</button>
+            <button class="nav-link" data-section="exams">▤ Exam Management</button>
+            <button class="nav-link" data-section="updatePerformance">✎ Update Performance</button>
+            <button class="nav-link" data-section="predictions">◈ Predictions</button>
+            <button class="nav-link" data-section="performance">▥ Performance Records</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="admin-card">
+                <div class="admin-avatar" id="adminAvatar">A</div>
+                <div class="admin-info">
+                    <strong id="adminName">Administrator</strong>
+                    <span>Admin Account</span>
+                </div>
+            </div>
+            <button class="logout-button" id="logoutButton">↪ Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p>Manage students, exams and performance.</p>
+                </div>
+            </div>
+            <div class="topbar-status"><span class="status-dot"></span> System Dashboard</div>
+        </header>
+
+        <div class="page-content">
+            <p id="pageMessage" class="message hidden" role="status"></p>
+
+            <!-- DASHBOARD -->
+            <section id="overviewSection" class="content-section">
+                <div class="welcome-banner">
+                    <div>
+                        <span class="eyebrow">ADMIN OVERVIEW</span>
+                        <h2>Welcome back, <span id="welcomeName">Admin</span>!</h2>
+                        <p>Monitor student performance and manage MarkSense.</p>
+                    </div>
+                    <div class="welcome-symbol">M</div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Total Students</span><span class="stat-icon purple">♙</span></div>
+                        <strong id="totalStudents">0</strong>
+                        <p>Registered student accounts</p>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Total Exams</span><span class="stat-icon blue">▤</span></div>
+                        <strong id="totalExams">0</strong>
+                        <p>Exams in the system</p>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Total Predictions</span><span class="stat-icon green">◈</span></div>
+                        <strong id="totalPredictions">0</strong>
+                        <p>Marks predictions recorded</p>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-top"><span>Average Predicted Marks</span><span class="stat-icon orange">▥</span></div>
+                        <strong id="averagePrediction">0.00</strong>
+                        <p>Average marks out of 100</p>
+                    </article>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div><h2>Recent Predictions</h2><p>Latest student predictions.</p></div>
+                        <button class="text-button" data-go="predictions">View all →</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>Student</th><th>Exam</th><th>Subject</th><th>Predicted Marks</th><th>Performance</th></tr></thead>
+                            <tbody id="recentPredictions"><tr><td colspan="5" class="table-empty">Loading predictions...</td></tr></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <div class="quick-actions">
+                    <button class="quick-action" data-go="students"><span>♙</span><div><strong>Manage Students</strong><small>View student details</small></div><span class="arrow">→</span></button>
+                    <button class="quick-action" data-go="exams"><span>▤</span><div><strong>Manage Exams</strong><small>Create exams</small></div><span class="arrow">→</span></button>
+                    <button class="quick-action" data-go="updatePerformance"><span>✎</span><div><strong>Update Performance</strong><small>Enter actual marks</small></div><span class="arrow">→</span></button>
+                    <button class="quick-action" data-go="performance"><span>▥</span><div><strong>View Performance</strong><small>Review saved results</small></div><span class="arrow">→</span></button>
+                </div>
+            </section>
+
+            <!-- STUDENTS -->
+            <section id="studentsSection" class="content-section hidden">
+                <div class="section-intro">
+                    <div><h2>Student Management</h2><p>View registered students.</p></div>
+                    <button class="secondary-button" id="refreshStudents">↻ Refresh</button>
+                </div>
+                <article class="panel">
+                    <div class="table-toolbar">
+                        <input type="search" id="studentSearch" placeholder="Search students...">
+                        <span class="record-count" id="studentCount">0 students</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>Student ID</th><th>Account ID</th><th>Name</th><th>Email</th><th>Department</th><th>Year</th><th>Semester</th><th>Attendance</th></tr></thead>
+                            <tbody id="studentsTable"><tr><td colspan="8" class="table-empty">Loading students...</td></tr></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- EXAMS -->
+            <section id="examsSection" class="content-section hidden">
+                <div class="section-intro">
+                    <div><h2>Exam Management</h2><p>Create exams for departments.</p></div>
+                    <button class="secondary-button" id="refreshExams">↻ Refresh</button>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading"><div><h2>Create New Exam</h2><p>Select department before subject.</p></div></div>
+                    <form id="examForm" class="exam-form">
+                        <div class="form-group"><label for="exam_name">Exam Name</label><input id="exam_name" type="text" placeholder="Mid Term Exam" required></div>
+                        <div class="form-group">
+                            <label for="examDepartment">Department</label>
+                            <select id="examDepartment" required>
+                                <option value="">Select Department</option>
+                                <option>Computer Science (CSE)</option>
+                                <option>Information Technology (IT)</option>
+                                <option>Electronics (ECE)</option>
+                                <option>Electrical (EEE)</option>
+                                <option>Mechanical</option>
+                                <option>Civil</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label for="subject">Subject</label><select id="subject" required disabled><option value="">Select department first</option></select></div>
+                        <div class="form-group"><label for="exam_date">Exam Date</label><input type="date" id="exam_date"></div>
+                        <div class="form-group"><label for="difficulty">Difficulty</label><select id="difficulty" required><option value="">Select Difficulty</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></div>
+                        <div class="form-group"><label for="max_marks">Maximum Marks</label><input type="number" id="max_marks" min="1" value="100" required></div>
+                        <p id="examFormMessage" class="message hidden" role="status"></p>
+                        <button type="submit" id="createExamButton" class="secondary-button">Create Exam</button>
+                    </form>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading"><div><h2>Available Exams</h2><p>Exams assigned to departments.</p></div></div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>Exam ID</th><th>Exam Name</th><th>Subject</th><th>Department</th><th>Date</th><th>Difficulty</th><th>Maximum Marks</th></tr></thead>
+                            <tbody id="examsTable"><tr><td colspan="7" class="table-empty">Loading exams...</td></tr></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- UPDATE PERFORMANCE -->
+            <section id="updatePerformanceSection" class="content-section hidden">
+                <div class="section-intro">
+                    <div><h2>Update Student Performance</h2><p>Enter assignments, external marks, attendance and study hours.</p></div>
+                </div>
+
+                <article class="panel">
+                    <div class="panel-heading"><div><h2>Select Class and Exam</h2><p>Select department, subject and exam.</p></div></div>
+                    <form id="performanceSelectionForm" class="exam-form">
+                        <div class="form-group">
+                            <label for="performanceDepartment">Department</label>
+                            <select id="performanceDepartment" required>
+                                <option value="">Select Department</option>
+                                <option>Computer Science (CSE)</option>
+                                <option>Information Technology (IT)</option>
+                                <option>Electronics (ECE)</option>
+                                <option>Electrical (EEE)</option>
+                                <option>Mechanical</option>
+                                <option>Civil</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label for="performanceSubject">Subject</label><select id="performanceSubject" required disabled><option value="">Select department first</option></select></div>
+                        <div class="form-group"><label for="performanceExam">Exam</label><select id="performanceExam" required disabled><option value="">Select subject first</option></select></div>
+                        <div class="form-group"><label for="performanceMaxMarks">External exam maximum</label><input type="number" id="performanceMaxMarks" value="100" readonly></div>
+                        <div class="form-group"><label for="performanceLoadButton">Load Students</label><button type="submit" id="performanceLoadButton" class="secondary-button">Load Students</button></div>
+                    </form>
+                    <p id="performanceEntryMessage" class="message hidden" role="status" aria-live="polite"></p>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div><h2>Student Marks Entry</h2><p>Assignments are out of 20 each. External is out of 100 and scaled to 60.</p></div>
+                        <span class="record-count" id="performanceEntryCount">0 students</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>Student ID</th><th>Student Name</th><th>Assignment 1 /20</th><th>Assignment 2 /20</th><th>External /100</th><th>External /60</th><th>Final /100</th><th>Attendance (%)</th><th>Study Hours / Week</th></tr>
+                            </thead>
+                            <tbody id="performanceEntryTable"><tr><td colspan="9" class="table-empty">Select department, subject and exam, then load students.</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div style="display:flex;justify-content:flex-end;margin-top:20px;">
+                        <button type="button" id="savePerformanceButton" class="secondary-button" disabled>Save All Performance Records</button>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PREDICTIONS -->
+            <section id="predictionsSection" class="content-section hidden">
+                <div class="section-intro">
+                    <div><h2>Prediction Records</h2><p>Review marks predictions.</p></div>
+                    <button class="secondary-button" id="refreshPredictions">↻ Refresh</button>
+                </div>
+                <article class="panel">
+                    <div class="table-toolbar"><input type="search" id="predictionSearch" placeholder="Search predictions..."><span class="record-count" id="predictionCount">Prediction records</span></div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead><tr><th>Prediction ID</th><th>Account ID</th><th>Student</th><th>Exam</th><th>Subject</th><th>Predicted Marks</th><th>Performance</th><th>Difficulty</th><th>Date</th></tr></thead>
+                            <tbody id="predictionsTable"><tr><td colspan="9" class="table-empty">Loading predictions...</td></tr></tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PERFORMANCE RECORDS -->
+            <section id="performanceSection" class="content-section hidden">
+                <div class="section-intro">
+                    <div><h2>Performance Records</h2><p>Review saved marks, attendance and study hours.</p></div>
+                    <button class="secondary-button" id="refreshPerformance">↻ Refresh</button>
+                </div>
+                <article class="panel">
+                    <div class="table-toolbar">
+                        <input type="search" id="performanceSearch" placeholder="Search performance records...">
+                        <span class="record-count" id="performanceCount">Performance records</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Performance ID</th>
+                                    <th>Account ID</th>
+                                    <th>Student</th>
+                                    <th>Exam</th>
+                                    <th>Subject</th>
+                                    <th>Assignment 1 /20</th>
+                                    <th>Assignment 2 /20</th>
+                                    <th>External /100</th>
+                                    <th>External /60</th>
+                                    <th>Final /100</th>
+                                    <th>Attendance</th>
+                                    <th>Study Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody id="performanceTable">
+                                <tr><td colspan="12" class="table-empty">Loading performance records...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <footer class="footer">
+                <span>MarkSense — Student Marks Predictor</span>
+                <span>© <span id="currentYear"></span> MarkSense</span>
+            </footer>
+        </div>
+    </main>
+</div>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>
